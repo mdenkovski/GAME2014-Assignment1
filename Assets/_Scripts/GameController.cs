@@ -4,6 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// GameController.cs
+/// Oct 3, 2020: updated rotation to account for landsape ref resolution
+/// </summary>
+
 public class GameController : MonoBehaviour
 {
     //public TMP_Text SceneLabel;
@@ -22,7 +29,16 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         Vector2 ScreenRes = new Vector2(Screen.safeArea.width, Screen.safeArea.height);
-        scale = ScreenRes / scaler.referenceResolution;
+        Vector2 RefRes = scaler.referenceResolution;
+        //correct orientation of ref res based on orientation of screen
+        if (Screen.orientation == ScreenOrientation.Landscape)
+        {
+            float tempX = RefRes.x;
+            RefRes.x = RefRes.y;
+            RefRes.y = tempX;
+
+        }
+        scale = ScreenRes / RefRes;
 
         livesLabelHalfWidth = scale.x * LivesLabel.rectTransform.rect.width * 0.5f;
         livesLabelHalfHeight = scale.y * LivesLabel.rectTransform.rect.height * 0.5f;
@@ -30,7 +46,7 @@ public class GameController : MonoBehaviour
         scoreLabelHalfHeight = scale.y * ScoreLabel.rectTransform.rect.height * 0.5f;
 
         
-
+        //debug the position adjustment values
         Rect safeArea = Screen.safeArea;
         Debug.Log("X: " + safeArea.width);
         Debug.Log("Y: " + safeArea.height);
@@ -41,7 +57,7 @@ public class GameController : MonoBehaviour
         Debug.Log("safe area right: " + Screen.safeArea.xMax);
 
         Debug.Log("half width: " + livesLabelHalfWidth);
-        Debug.Log("half width: " + livesLabelHalfHeight);
+        Debug.Log("half height: " + livesLabelHalfHeight);
         Debug.Log("Scaler ref:  " + scaler.referenceResolution);
         Debug.Log("Scaler multiplier:  " + scale);
     }

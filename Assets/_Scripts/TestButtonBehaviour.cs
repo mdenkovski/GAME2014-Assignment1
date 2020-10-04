@@ -3,24 +3,18 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// TestButtonBehaviour.cs
+/// Oct 3, 2020: test feature to move label positions (currently not being used)
+/// </summary>
+
 public class TestButtonBehaviour : MonoBehaviour
 {
 
     public TMP_Text LivesLabel;
     public TMP_Text ScoreLabel;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     // Event Handler for the TestButton_Pressed Event
     public void OnTestButtonPressed()

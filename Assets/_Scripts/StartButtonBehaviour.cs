@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// StartButtonBehaviour.cs
+/// Oct 3, 2020: simple load to play scene
+/// </summary>
+
 public class StartButtonBehaviour : MonoBehaviour
 {
    
