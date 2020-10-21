@@ -48,18 +48,18 @@ public class GameController : MonoBehaviour
         
         //debug the position adjustment values
         Rect safeArea = Screen.safeArea;
-        Debug.Log("X: " + safeArea.width);
-        Debug.Log("Y: " + safeArea.height);
-        Debug.Log("width: " + Screen.width);
-        Debug.Log("height: " + Screen.height);
+        //Debug.Log("X: " + safeArea.width);
+        //Debug.Log("Y: " + safeArea.height);
+        //Debug.Log("width: " + Screen.width);
+        //Debug.Log("height: " + Screen.height);
       
-        Debug.Log("safe area left: " + Screen.safeArea.xMin);
-        Debug.Log("safe area right: " + Screen.safeArea.xMax);
+        //Debug.Log("safe area left: " + Screen.safeArea.xMin);
+        //Debug.Log("safe area right: " + Screen.safeArea.xMax);
 
-        Debug.Log("half width: " + livesLabelHalfWidth);
-        Debug.Log("half height: " + livesLabelHalfHeight);
-        Debug.Log("Scaler ref:  " + scaler.referenceResolution);
-        Debug.Log("Scaler multiplier:  " + scale);
+        //Debug.Log("half width: " + livesLabelHalfWidth);
+        //Debug.Log("half height: " + livesLabelHalfHeight);
+        //Debug.Log("Scaler ref:  " + scaler.referenceResolution);
+        //Debug.Log("Scaler multiplier:  " + scale);
     }
 
 
