@@ -35,7 +35,9 @@ public class Joystick : MonoBehaviour
                 //Debug.Log("In Circle");
                 //set the direction vector of our movememnt and normalize it
                 InputDirection = touch.position - new Vector2(transform.position.x, transform.position.y);
-                InputDirection.Normalize();
+                InputDirection = InputDirection.normalized;
+
+                //Debug.Log(InputDirection);
 
                 //update the pad image to provide feedback to the player
                 PadImage.enabled = true;

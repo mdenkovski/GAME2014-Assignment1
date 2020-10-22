@@ -14,57 +14,44 @@ public class PlayerController : MonoBehaviour
 
     private float direction = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        // keyboard support
-        if (Input.GetAxis("Horizontal") >= 0.1f)
-        {
-            // direction is positive
-            direction = 1.0f;
-        }
-        //use the horizontal axis for the movememnt
-        if (Input.GetAxis("Horizontal") <= -0.1f)
-        {
-            // direction is negative
-            direction = -1.0f;
-        }
-
-        Vector2 newVelocity = Rigidbody.velocity + new Vector2(direction * Speed * Time.deltaTime, 0.0f);
-        Rigidbody.velocity = newVelocity;
-
         //parse movement
-        if (joystick.InputDirection.x > 0.2f)//mov right
+        if (joystick.InputDirection.x > 0.2f)//move right
         {
-            Rigidbody.velocity = new Vector2(joystick.InputDirection.x * Speed * Time.deltaTime, Rigidbody.velocity.y);
+            Debug.Log("Moving Right");
+            Rigidbody.velocity = new Vector2(Speed , Rigidbody.velocity.y);
             //animator.SetBool("IsRunning", true);
         }
         else if (joystick.InputDirection.x < -0.2f) // move left
         {
-            Rigidbody.velocity = new Vector2(joystick.InputDirection.x * Speed * Time.deltaTime, Rigidbody.velocity.y);
+            Debug.Log("Moving Left");
+            Rigidbody.velocity = new Vector2(-Speed , Rigidbody.velocity.y);
             // animator.SetBool("IsRunning", true);
             //animator.SetBool("Flipped", true);
         }
-        else
+        else //dont move left or right
         {
             Rigidbody.velocity = new Vector2(0.0f, Rigidbody.velocity.y);
             //animator.SetBool("IsRunning", false);
         }
 
-        if (joystick.InputDirection.y > 0.7f) //jump
+        if (joystick.InputDirection.y > 0.8f) //jump
         {
-            if(transform.position.y <1.16) //if near gorund level
+            if (transform.position.y < 1.16) //if near gorund level
             {
                 Debug.Log("Jumping");
-                Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, JumpPower * Time.deltaTime) ;
+                Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, Rigidbody.velocity.y + JumpPower);
 
             }
         }
+
+        Debug.DrawLine(transform.position, transform.position +  new Vector3(joystick.InputDirection.normalized.x, joystick.InputDirection.normalized.y, 0.0f)*5);
+
     }
+
+    
 }
