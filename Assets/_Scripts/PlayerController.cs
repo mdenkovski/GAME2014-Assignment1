@@ -27,22 +27,19 @@ public class PlayerController : MonoBehaviour
         //parse movement
         if (joystick.InputDirection.x > 0.2f)//move right
         {
-            Debug.Log("Moving Right");
+            //Debug.Log("Moving Right");
             Rigidbody.velocity = new Vector2(Speed , Rigidbody.velocity.y);
             spriteRenderer.flipX = false;
-            //animator.SetBool("IsRunning", true);
         }
         else if (joystick.InputDirection.x < -0.2f) // move left
         {
             spriteRenderer.flipX = true;
-            Debug.Log("Moving Left");
+            //Debug.Log("Moving Left");
             Rigidbody.velocity = new Vector2(-Speed , Rigidbody.velocity.y);
-            //animator.SetBool("Flipped", true);
         }
         else //dont move left or right
         {
             Rigidbody.velocity = new Vector2(0.0f, Rigidbody.velocity.y);
-            //animator.SetBool("IsRunning", false);
         }
         animator.SetFloat("Speed", math.abs(Rigidbody.velocity.x));
 
@@ -50,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             if (transform.position.y < 1.16 && transform.position.y > 1.15) //if near gorund level
             {
-                Debug.Log("Jumping");
+                //Debug.Log("Jumping");
                 Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, JumpPower);
                 animator.SetBool("IsJumping", true);
             }

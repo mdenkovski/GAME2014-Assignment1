@@ -143,3 +143,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8126541300580261281}
+  speed: 1
+  playerCharacter: {fileID: 0}
