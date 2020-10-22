@@ -41,10 +41,10 @@ public class PlayerController : MonoBehaviour
 
         if (joystick.InputDirection.y > 0.8f) //jump
         {
-            if (transform.position.y < 1.16) //if near gorund level
+            if (transform.position.y < 1.16 && transform.position.y > 1.15) //if near gorund level
             {
                 Debug.Log("Jumping");
-                Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, Rigidbody.velocity.y + JumpPower);
+                Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, JumpPower);
 
             }
         }
