@@ -18,6 +18,7 @@ public class GoblinController : MonoBehaviour
     public Animator animator;
     public float speed = 5;
     public GameObject playerCharacter;
+    public float DetectionRange = 10.0f;
 
     public float AttackPower = 10;
     public float AttackSpeed = 1.0f;
@@ -39,7 +40,7 @@ public class GoblinController : MonoBehaviour
         float distance = math.distance(playerCharacter.transform.position.x, transform.position.x);
 
         //check distance to player if within certain amount
-        if (distance < 10 && distance > 1)
+        if (distance < DetectionRange && distance > 1)
         {
             //Debug.Log("InRange");
             //find the direction the player is relative to us
