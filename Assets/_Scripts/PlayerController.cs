@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
         //Debug.DrawLine(transform.position, transform.position +  new Vector3(joystick.InputDirection.normalized.x, joystick.InputDirection.normalized.y, 0.0f)*5);
 
+        Debug.DrawLine(AttackPositoin.position, AttackPositoin.position + Vector3.right * AttackRange, Color.red);
     }
 
     /// <summary>
@@ -100,9 +101,16 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Attacking");
             animator.SetTrigger("Attack"); //attack animation
             //get all the enemies hit in the circle and that are on the layer
-            Collider2D hitEnemy = Physics2D.OverlapCircle(AttackPositoin.position, AttackRange, enemyLayers);
+            //Collider2D hitEnemy = Physics2D.OverlapCircle(AttackPositoin.position, AttackRange, enemyLayers);
+            
+            RaycastHit2D hit = Physics2D.Linecast(AttackPositoin.position, AttackPositoin.position + Vector3.right * AttackRange, enemyLayers);
+            Debug.Log(hit.collider);
+            if (hit.collider != null)
+            {
+                hit.collider.GetComponent<EnemyStats>().TakeDamage(AttackPower);
+            }
             //perform damage calculation if we hit the enemy
-            hitEnemy.GetComponent<EnemyStats>().TakeDamage(AttackPower);
+            //hitEnemy.GetComponent<EnemyStats>().TakeDamage(AttackPower);
             //set our last attack time to the current time
             lastAttack = Time.time;
         }
