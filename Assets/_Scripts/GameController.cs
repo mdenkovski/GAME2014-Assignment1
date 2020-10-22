@@ -8,7 +8,9 @@ using UnityEngine.UI;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// GameController.cs
-/// Oct 3, 2020: updated rotation to account for landsape ref resolution
+/// Last Edit Oct 21, 2020
+/// -updated rotation to account for landsape ref resolution
+/// - commented outsome debug lines
 /// </summary>
 
 public class GameController : MonoBehaviour
@@ -47,7 +49,7 @@ public class GameController : MonoBehaviour
 
         
         //debug the position adjustment values
-        Rect safeArea = Screen.safeArea;
+        //Rect safeArea = Screen.safeArea;
         //Debug.Log("X: " + safeArea.width);
         //Debug.Log("Y: " + safeArea.height);
         //Debug.Log("width: " + Screen.width);

@@ -5,6 +5,13 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// Joystick.cs
+/// Last Edit Oct 21, 2020
+/// - created joystic to hold a normalized direction in where the player is touching the screen vs the touch pad
+/// </summary>
 public class Joystick : MonoBehaviour
 {
     private Vector2 m_InputDirection;
@@ -14,10 +21,12 @@ public class Joystick : MonoBehaviour
         set { m_InputDirection = value; }
     }
 
+    //image of the thumb pad
     public Image PadImage;
 
     private void Start()
     {
+        //dont want pad visible on start
         PadImage.enabled = false;
     }
 
@@ -46,7 +55,9 @@ public class Joystick : MonoBehaviour
             }
             else
             {
+                //if we are not touching the pad close enough then will not use it
                 PadImage.enabled = false;
+                InputDirection = new Vector2(0.0f, 0.0f);
             }
         }
         if(Input.touches.Length == 0)
