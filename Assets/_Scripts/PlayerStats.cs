@@ -86,6 +86,10 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(TransitionToGameOver());
         Controller.Rigidbody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
         animator.SetBool("IsDead", true);
+        if(health >0)
+        {
+            animator.SetTrigger("EnvirontmentDeath");
+        }
         Controller.enabled = false;
         //this.enabled = false;
     }
