@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// PlayerStats.cs
-/// Last Edit Oct 21, 2020
+/// Last Edit Oct 23, 2020
 /// - added stats that the player would need
 /// - added functions for taking damage and death
+/// - added coroutine to taking damage so that timing works better
+/// - added transition to game over screen
 /// </summary>
 
 public class PlayerStats : MonoBehaviour
@@ -21,6 +23,8 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth;
     //health is initialized to max health on start
     private float health;
+    //keep track if we are dead
+    private bool b_dead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +38,41 @@ public class PlayerStats : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(float damage)
     {
-        health -= damage;
+        if (!b_dead)
+        {
+            StartCoroutine(Hit(damage));
+        }
+    }
 
+    /// <summary>
+    /// Coroutine function to have a delay before aplying damage to allow for animations to occur
+    /// </summary>
+    /// <param name="damage"></param>
+    /// <returns></returns>
+    IEnumerator Hit(float damage)
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (!b_dead)
+        {
+            animator.SetTrigger("Hit");
+            health -= damage;
+        }
         if (health <= 0)
         {
+            health = 0;
+            b_dead = true;
+            StartCoroutine(TransitionToGameOver());
             _Death();
         }
     }
+
+    IEnumerator TransitionToGameOver()
+    {
+        yield return new WaitForSeconds(3.0f);
+        Debug.Log("Loading End Scene");
+        SceneManager.LoadScene("End");
+    }
+
 
     /// <summary>
     /// call when the player dies. deactivate control of the player
@@ -48,8 +80,9 @@ public class PlayerStats : MonoBehaviour
     private void _Death()
     {
         Debug.Log("Dead");
+        Controller.Rigidbody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
         animator.SetBool("IsDead", true);
         Controller.enabled = false;
-        this.enabled = false;
+        //this.enabled = false;
     }
 }

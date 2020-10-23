@@ -40028,7 +40028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8126541300580261282, guid: 32ff8d50417da604e91bcb0c107be359, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8126541300580261295, guid: 32ff8d50417da604e91bcb0c107be359, type: 3}
       propertyPath: m_LocalPosition.x
@@ -40453,7 +40453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 1105561399}
   animator: {fileID: 1105561400}
-  maxHealth: 1000
+  maxHealth: 30
 --- !u!1 &1434706706
 GameObject:
   m_ObjectHideFlags: 0
@@ -87912,6 +87912,18 @@ PrefabInstance:
     - target: {fileID: 717643814151491086, guid: edfc0aebc6ade234c91a2c46c8d2c74a, type: 3}
       propertyPath: m_Name
       value: Mushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 717643814151491086, guid: edfc0aebc6ade234c91a2c46c8d2c74a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559149748703296800, guid: edfc0aebc6ade234c91a2c46c8d2c74a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.71875
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559149748703296800, guid: edfc0aebc6ade234c91a2c46c8d2c74a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.15625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfc0aebc6ade234c91a2c46c8d2c74a, type: 3}

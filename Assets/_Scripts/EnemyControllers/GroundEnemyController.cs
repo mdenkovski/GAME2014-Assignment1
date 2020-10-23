@@ -128,6 +128,7 @@ public class GroundEnemyController : MonoBehaviour
             lastAttack = Time.time;
             //deal guaranteed damage to our player
             playerCharacter.GetComponent<PlayerStats>().TakeDamage(stats.AttackPower);
+           
         }
 
     }
