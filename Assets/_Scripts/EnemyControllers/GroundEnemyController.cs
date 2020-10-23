@@ -121,7 +121,7 @@ public class GroundEnemyController : MonoBehaviour
         //check if the difference from the last time we attacked is greater than our attack speed in seconds
         if (Time.time - lastAttack > stats.AttackSpeed)
         {
-            Debug.Log("Attacking");
+            //Debug.Log("Attacking");
             //attack animation
             animator.SetTrigger("Attack");
             //set our last attack time to the current time

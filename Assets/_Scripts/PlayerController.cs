@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             //Collider2D hitEnemy = Physics2D.OverlapCircle(AttackPositoin.position, AttackRange, enemyLayers);
             
             RaycastHit2D hit = Physics2D.Linecast(AttackPositoin.position, AttackPositoin.position + Vector3.right * AttackRange, enemyLayers);
-            Debug.Log(hit.collider);
+           // Debug.Log(hit.collider);
             if (hit.collider != null)
             {
                 hit.collider.GetComponent<EnemyStats>().TakeDamage(AttackPower);

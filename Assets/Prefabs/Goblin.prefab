@@ -168,6 +168,7 @@ MonoBehaviour:
   Controller: {fileID: 3742440512594947404}
   Collider: {fileID: 5077678786370367116}
   animator: {fileID: 8126541300580261281}
+  scoreValue: 10
   maxHealth: 30
   AttackPower: 10
   AttackSpeed: 1
@@ -191,4 +192,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
