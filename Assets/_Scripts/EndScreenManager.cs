@@ -25,7 +25,7 @@ public class EndScreenManager : MonoBehaviour
 
             if (m_gameWon) //if the player won
             {
-                GameStatusText.text = "Congradulations You Win!!!";
+                GameStatusText.text = "Congratulations You Win!!!";
             }
             else //player lost
             {

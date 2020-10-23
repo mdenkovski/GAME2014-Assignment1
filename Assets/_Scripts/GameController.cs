@@ -99,6 +99,11 @@ public class GameController : MonoBehaviour
         stats.Score = m_score;
     }
 
+
+    /// <summary>
+    /// set the status of if the game was won or not
+    /// </summary>
+    /// <param name="won"></param>
     public void SetGameWonStatus(bool won)
     {
         stats.GameWon = won;
