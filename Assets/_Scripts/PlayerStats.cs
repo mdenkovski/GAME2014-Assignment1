@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
         {
             health = 0;
             
-            _Death();
+            Death();
         }
     }
     /// <summary>
@@ -79,7 +79,7 @@ public class PlayerStats : MonoBehaviour
     /// <summary>
     /// call when the player dies. deactivate control of the player
     /// </summary>
-    private void _Death()
+    public void Death()
     {
         Debug.Log("Dead");
         b_dead = true;
