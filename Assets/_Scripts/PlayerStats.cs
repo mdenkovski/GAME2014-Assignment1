@@ -22,7 +22,6 @@ public class PlayerStats : MonoBehaviour
     public GameController gameController;
 
     public int NumLives = 3;
-    private int Score = 0;
 
     //set our max health in editor
     public float maxHealth;
@@ -36,7 +35,6 @@ public class PlayerStats : MonoBehaviour
         //set health to max health
         health = maxHealth;
         gameController.UpdateLives(NumLives);
-        gameController.UpdateScore(Score);
     }
 
     /// <summary>
@@ -115,6 +113,7 @@ public class PlayerStats : MonoBehaviour
     {
         Controller.enabled = false;
         yield return new WaitForSeconds(3.0f);
+        health = maxHealth;
         Controller.Respawn();
         Controller.enabled = true;
     }

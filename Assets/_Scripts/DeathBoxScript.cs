@@ -10,7 +10,11 @@ public class DeathBoxScript : MonoBehaviour
     {
         Debug.Log("Player Entered Collider");
         //kill the player when they enter the collider
-        collision.GetComponent<PlayerStats>().Death();  
+        PlayerStats stats = collision.GetComponent<PlayerStats>();
+        if(stats != null) //make sure a valid player enters the trigger
+        {
+            stats.Death();
+        }
     }
 
 

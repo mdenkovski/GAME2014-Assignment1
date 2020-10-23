@@ -16,7 +16,11 @@ public class EnemyStats : MonoBehaviour
     public GroundEnemyController Controller;
     public BoxCollider2D Collider;
     public Animator animator;
-    
+
+    //for updating the score
+    public int scoreValue = 10;
+    private GameController gameController;
+
     //set our max health in editor
     public float maxHealth;
     //health is initialized to max health on start
@@ -30,6 +34,7 @@ public class EnemyStats : MonoBehaviour
     {
         //set health to max health
         health = maxHealth;
+        gameController = FindObjectOfType<GameController>();
     }
 
     /// <summary>
@@ -55,6 +60,9 @@ public class EnemyStats : MonoBehaviour
     {
         Debug.Log("Dead");
         animator.SetBool("IsDead",true);
+        gameController.UpdateScore(scoreValue);
+        Controller.Rigidbody.gravityScale = 0;
+        Controller.Rigidbody.velocity = new Vector3();
         Controller.enabled = false;
         Collider.enabled = false;
         this.enabled = false;

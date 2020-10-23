@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     private float scoreLabelHalfWidth;
     private float scoreLabelHalfHeight;
 
-
+    private int m_score = 0;
 
     public Vector2 scale;
 
@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
         scoreLabelHalfWidth = scale.x * ScoreLabel.rectTransform.rect.width * 0.5f;
         scoreLabelHalfHeight = scale.y * ScoreLabel.rectTransform.rect.height * 0.5f;
 
+        UpdateScore(0);
 
         //debug the position adjustment values
         //Rect safeArea = Screen.safeArea;
@@ -80,6 +81,7 @@ public class GameController : MonoBehaviour
     }
     public void UpdateScore(int score)
     {
-        ScoreLabel.text = "Score: " + score.ToString();
+        m_score += score;
+        ScoreLabel.text = "Score: " + m_score.ToString();
     }
 }
