@@ -7,28 +7,43 @@ using UnityEngine;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// GroundEnemyController.cs
-/// Last Edit Oct 21, 2020
+/// Last Edit Oct 23, 2020
 /// - added simple AI to move towards player if within certain range
 /// - animations based on actions
 /// - attack the player and deal damage if within a certain range
+/// - reworked AI to use line tracing to detect the player
+/// - movement based on rigidbody
 /// </summary>
 
 public class GroundEnemyController : MonoBehaviour
 {
     public Animator animator;
     public float speed = 5;
-    public GameObject playerCharacter;
+    //our body that we are moving
+    public Rigidbody2D Rigidbody;
+    //how far our line trace will go out
     public float DetectionRange = 10.0f;
+    //duration of time to pass before we switch direction in patrol
+    public float PatrolDuration = 3.0f;
+    private float TimeSinceLastPatrol;
 
-    public float AttackPower = 10;
-    public float AttackSpeed = 1.0f;
+    Vector3 DirectionFacing;
+    public LayerMask playerLayer; // know where to find our player
+
+    public EnemyStats stats;
     private float lastAttack;
 
 
+    private GameObject playerCharacter;
+    //use to manipulate the direction of our sprite
+    private SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
+        TimeSinceLastPatrol = Time.time;
+        DirectionFacing = Vector3.left;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         //find the player so we can detect their proximity later
         playerCharacter = GameObject.FindGameObjectWithTag("Player");
     }
@@ -36,35 +51,67 @@ public class GroundEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //find the distance to the player
-        float distance = math.distance(playerCharacter.transform.position.x, transform.position.x);
-
-        //check distance to player if within certain amount
-        if (distance < DetectionRange && distance > 1)
+        //if player is in detection range
+        if(_CheckForPlayer())
         {
-            //Debug.Log("InRange");
-            //find the direction the player is relative to us
-            float direction = playerCharacter.transform.position.x - transform.position.x;
-            //clamp relative direction to be within 1
-            math.clamp(direction, -1, 1);
-            //move based on our clamped distance and speed to the player
-            transform.position += (new Vector3(direction * speed * Time.deltaTime, 0.0f, 0.0f));
-            //tell animator we are running
-            animator.SetFloat("Speed", math.abs(direction));
-
-        }
-        else if(distance < 1)
-        {
-            animator.SetFloat("Speed", 0);
-            //if we are close enough to the player we can attack
-            Attack();
+            _MoveTowardPlayer();
         }
         else
         {
-            //too far away so just idle
-            animator.SetFloat("Speed", 0);
+            _Patrol();
+        }
+        animator.SetFloat("Speed", math.abs(Rigidbody.velocity.x));
+
+        
+    }
+
+    /// <summary>
+    /// check to see if we hit the player in our detection range
+    /// </summary>
+    /// <returns></returns>
+    private bool _CheckForPlayer()
+    {
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, transform.position + DirectionFacing * DetectionRange, playerLayer);
+        Debug.DrawLine(transform.position, transform.position + DirectionFacing * DetectionRange, Color.red);
+        //Debug.Log(hit.collider);
+        if (hit.collider != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void _MoveTowardPlayer()
+    {
+        //find the distance to the player
+        float distance = math.distance(playerCharacter.transform.position.x, transform.position.x);
+        if (distance >1)
+        {
+            Rigidbody.velocity = (DirectionFacing * speed);
+        }
+        else if(_CheckForPlayer()) //in range and player is in our line of sight
+        {
+            Attack();
         }
     }
+
+    /// <summary>
+    /// move the enemy left and right based on the patrol time 
+    /// </summary>
+    private void _Patrol()
+    {
+        if(Time.time - TimeSinceLastPatrol > PatrolDuration)
+        {
+            //reverse out patrol direction
+            DirectionFacing *= -1;
+            spriteRenderer.flipX = (DirectionFacing.x == 1? false :true);
+            TimeSinceLastPatrol = Time.time;
+        }
+
+        Rigidbody.velocity = (DirectionFacing * speed);
+    }
+
 
     /// <summary>
     /// Perform our attack when called
@@ -72,7 +119,7 @@ public class GroundEnemyController : MonoBehaviour
     void Attack()
     {
         //check if the difference from the last time we attacked is greater than our attack speed in seconds
-        if (Time.time - lastAttack > AttackSpeed)
+        if (Time.time - lastAttack > stats.AttackSpeed)
         {
             Debug.Log("Attacking");
             //attack animation
@@ -80,7 +127,7 @@ public class GroundEnemyController : MonoBehaviour
             //set our last attack time to the current time
             lastAttack = Time.time;
             //deal guaranteed damage to our player
-            playerCharacter.GetComponent<PlayerStats>().TakeDamage(AttackPower);
+            playerCharacter.GetComponent<PlayerStats>().TakeDamage(stats.AttackPower);
         }
 
     }

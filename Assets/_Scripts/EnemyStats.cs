@@ -21,7 +21,9 @@ public class EnemyStats : MonoBehaviour
     public float maxHealth;
     //health is initialized to max health on start
     private float health;
-    
+
+    public float AttackPower = 10;
+    public float AttackSpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()

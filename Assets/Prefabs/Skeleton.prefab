@@ -146,10 +146,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1743314942500207803}
   speed: 5
-  playerCharacter: {fileID: 0}
+  Rigidbody: {fileID: 5541219542513319543}
   DetectionRange: 10
-  AttackPower: 10
-  AttackSpeed: 1
+  PatrolDuration: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  stats: {fileID: 8203128793456975607}
 --- !u!114 &8203128793456975607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +169,8 @@ MonoBehaviour:
   Collider: {fileID: 3351153118495510422}
   animator: {fileID: 1743314942500207803}
   maxHealth: 40
+  AttackPower: 15
+  AttackSpeed: 3
 --- !u!50 &5541219542513319543
 Rigidbody2D:
   serializedVersion: 4
