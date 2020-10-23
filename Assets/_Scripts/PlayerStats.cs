@@ -60,12 +60,14 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
-            b_dead = true;
-            StartCoroutine(TransitionToGameOver());
+            
             _Death();
         }
     }
-
+    /// <summary>
+    /// coroutine to transition to game over screen after 3 seconds
+    /// </summary>
+    /// <returns></returns>
     IEnumerator TransitionToGameOver()
     {
         yield return new WaitForSeconds(3.0f);
@@ -80,6 +82,8 @@ public class PlayerStats : MonoBehaviour
     private void _Death()
     {
         Debug.Log("Dead");
+        b_dead = true;
+        StartCoroutine(TransitionToGameOver());
         Controller.Rigidbody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
         animator.SetBool("IsDead", true);
         Controller.enabled = false;
