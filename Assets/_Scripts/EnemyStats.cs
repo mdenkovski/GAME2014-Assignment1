@@ -60,7 +60,7 @@ public class EnemyStats : MonoBehaviour
     {
         Debug.Log("Dead");
         animator.SetBool("IsDead",true);
-        gameController.UpdateScore(scoreValue);
+        gameController.IncreaseScore(scoreValue);
         Controller.Rigidbody.gravityScale = 0;
         Controller.Rigidbody.velocity = new Vector3();
         Controller.enabled = false;

@@ -8,7 +8,7 @@ public class DeathBoxScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Player Entered Collider");
+        //Debug.Log("Player Entered Collider");
         //kill the player when they enter the collider
         PlayerStats stats = collision.GetComponent<PlayerStats>();
         if(stats != null) //make sure a valid player enters the trigger

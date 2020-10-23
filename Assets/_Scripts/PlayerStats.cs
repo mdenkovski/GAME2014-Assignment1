@@ -50,6 +50,15 @@ public class PlayerStats : MonoBehaviour
     }
 
     /// <summary>
+    /// add 1 life to the player and update the UI
+    /// </summary>
+    public void AddLife()
+    {
+        NumLives++;
+        gameController.UpdateLives(NumLives);
+    }
+
+    /// <summary>
     /// Coroutine function to have a delay before aplying damage to allow for animations to occur
     /// </summary>
     /// <param name="damage"></param>

@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
         scoreLabelHalfWidth = scale.x * ScoreLabel.rectTransform.rect.width * 0.5f;
         scoreLabelHalfHeight = scale.y * ScoreLabel.rectTransform.rect.height * 0.5f;
 
-        UpdateScore(0);
+        IncreaseScore(0);
 
         //debug the position adjustment values
         //Rect safeArea = Screen.safeArea;
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
     {
         LivesLabel.text = "Lives: " + lives.ToString();
     }
-    public void UpdateScore(int score)
+    public void IncreaseScore(int score)
     {
         m_score += score;
         ScoreLabel.text = "Score: " + m_score.ToString();
