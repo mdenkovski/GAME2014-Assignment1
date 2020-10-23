@@ -12,6 +12,7 @@ public class PotionScript : MonoBehaviour
         {
             //increase the players lives by 1
             playerStats.AddLife();
+            Destroy(gameObject);
         }
     }
 }

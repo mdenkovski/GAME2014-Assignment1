@@ -10,7 +10,7 @@ public class TreasureScript : MonoBehaviour
         //make sure the player enters the treasure
         if (collision.GetComponent<PlayerStats>() != null)
         {
-            FindObjectOfType<GameController>().SetGameWonStatus(false);
+            FindObjectOfType<GameController>().SetGameWonStatus(true);
             //transition to the end scene
             SceneManager.LoadScene("End");
 
