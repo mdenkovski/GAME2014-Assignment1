@@ -84,6 +84,7 @@ public class PlayerStats : MonoBehaviour
     /// <returns></returns>
     IEnumerator TransitionToGameOver()
     {
+        gameController.SetGameWonStatus(false);
         yield return new WaitForSeconds(3.0f);
         Debug.Log("Loading End Scene");
         SceneManager.LoadScene("End");

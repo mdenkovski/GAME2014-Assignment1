@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     private float scoreLabelHalfHeight;
 
     private int m_score = 0;
+    public GameStats stats;
 
     public Vector2 scale;
 
@@ -65,6 +66,7 @@ public class GameController : MonoBehaviour
         //Debug.Log("half height: " + livesLabelHalfHeight);
         //Debug.Log("Scaler ref:  " + scaler.referenceResolution);
         //Debug.Log("Scaler multiplier:  " + scale);
+        stats.Score = m_score;
     }
 
 
@@ -79,9 +81,26 @@ public class GameController : MonoBehaviour
     {
         LivesLabel.text = "Lives: " + lives.ToString();
     }
+    /// <summary>
+    /// Increase score by x amount (int)
+    /// </summary>
+    /// <param name="score"></param>
     public void IncreaseScore(int score)
     {
         m_score += score;
         ScoreLabel.text = "Score: " + m_score.ToString();
+    }
+
+    /// <summary>
+    /// when we transition to a new scene and destory the controller we pass on our score to the game stats that is preserved
+    /// </summary>
+    private void OnDestroy()
+    {
+        stats.Score = m_score;
+    }
+
+    public void SetGameWonStatus(bool won)
+    {
+        stats.GameWon = won;
     }
 }

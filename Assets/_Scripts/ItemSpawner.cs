@@ -20,20 +20,20 @@ public class ItemSpawner : MonoBehaviour
         switch (spawnObject)
         {
             case 0:
-                //spawn a potion
-                Instantiate(PotionPrefab);
+                //spawn a potion at our transform location
+                Instantiate(PotionPrefab, transform);
                 break;
             case 1:
-                //spawn a small gold
-                Instantiate(SmallGoldPrefab);
+                //spawn a small gold at our transform location
+                Instantiate(SmallGoldPrefab, transform);
                 break;
             case 2:
-                //spawn a medium gold
-                Instantiate(MediumGoldPrefab);
+                //spawn a medium gold at our transform location
+                Instantiate(MediumGoldPrefab, transform);
                 break;
             case 3:
-                //sawn a large gold
-                Instantiate(LargeGoldPrefab);
+                //sawn a large gold at our transform location
+                Instantiate(LargeGoldPrefab, transform);
                 break;
             default:
                 break;
