@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8126541300580261280}
   - component: {fileID: 8126541300580261281}
   - component: {fileID: 5077678786370367116}
-  - component: {fileID: 76930517632101429}
+  - component: {fileID: 3742440512594947404}
   - component: {fileID: 1810842708532690925}
   - component: {fileID: 6137208387067931672}
   m_Layer: 8
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.03125, y: 1.125}
   m_EdgeRadius: 0
---- !u!114 &76930517632101429
+--- !u!114 &3742440512594947404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,11 +141,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8126541300580261282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380282a2c4999f44685017df603358a3, type: 3}
+  m_Script: {fileID: 11500000, guid: b146ded1fc3c4444ca1c9dc423d9994f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8126541300580261281}
-  speed: 1
+  speed: 5
   playerCharacter: {fileID: 0}
   DetectionRange: 10
   AttackPower: 10
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c836baaf9e23045856ecc38bab8a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 76930517632101429}
+  Controller: {fileID: 3742440512594947404}
   Collider: {fileID: 5077678786370367116}
   animator: {fileID: 8126541300580261281}
   maxHealth: 30

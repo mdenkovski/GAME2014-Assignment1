@@ -6,14 +6,14 @@ using UnityEngine;
 
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
-/// GoblinController.cs
+/// GroundEnemyController.cs
 /// Last Edit Oct 21, 2020
 /// - added simple AI to move towards player if within certain range
 /// - animations based on actions
 /// - attack the player and deal damage if within a certain range
 /// </summary>
 
-public class GoblinController : MonoBehaviour
+public class GroundEnemyController : MonoBehaviour
 {
     public Animator animator;
     public float speed = 5;
@@ -61,7 +61,7 @@ public class GoblinController : MonoBehaviour
         }
         else
         {
-            //to far away so just idle
+            //too far away so just idle
             animator.SetFloat("Speed", 0);
         }
     }

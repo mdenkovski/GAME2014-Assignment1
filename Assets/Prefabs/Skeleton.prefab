@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1743314942500207802}
   - component: {fileID: 1743314942500207803}
   - component: {fileID: 3351153118495510422}
-  - component: {fileID: 7631197906726505775}
+  - component: {fileID: 3006344270352365229}
   - component: {fileID: 8203128793456975607}
   - component: {fileID: 5541219542513319543}
   m_Layer: 8
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6531944, y: 1.6014185}
   m_EdgeRadius: 0
---- !u!114 &7631197906726505775
+--- !u!114 &3006344270352365229
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,15 +141,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1743314942500207800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 380282a2c4999f44685017df603358a3, type: 3}
+  m_Script: {fileID: 11500000, guid: b146ded1fc3c4444ca1c9dc423d9994f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1743314942500207803}
-  speed: 0.5
+  speed: 5
   playerCharacter: {fileID: 0}
-  DetectionRange: 20
-  AttackPower: 20
-  AttackSpeed: 3
+  DetectionRange: 10
+  AttackPower: 10
+  AttackSpeed: 1
 --- !u!114 &8203128793456975607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2c836baaf9e23045856ecc38bab8a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 7631197906726505775}
+  Controller: {fileID: 3006344270352365229}
   Collider: {fileID: 3351153118495510422}
   animator: {fileID: 1743314942500207803}
   maxHealth: 40

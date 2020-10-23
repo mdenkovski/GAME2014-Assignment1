@@ -13,7 +13,7 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     //parameters for control
-    public GoblinController Controller;
+    public GroundEnemyController Controller;
     public BoxCollider2D Collider;
     public Animator animator;
     
