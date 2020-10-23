@@ -19,6 +19,11 @@ public class PlayerStats : MonoBehaviour
     public PlayerController Controller;
     public Animator animator;
 
+    public GameController gameController;
+
+    public int NumLives = 3;
+    private int Score = 0;
+
     //set our max health in editor
     public float maxHealth;
     //health is initialized to max health on start
@@ -30,6 +35,8 @@ public class PlayerStats : MonoBehaviour
     {
         //set health to max health
         health = maxHealth;
+        gameController.UpdateLives(NumLives);
+        gameController.UpdateScore(Score);
     }
 
     /// <summary>
@@ -83,14 +90,32 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("Dead");
         b_dead = true;
-        StartCoroutine(TransitionToGameOver());
+        NumLives -= 1;
         Controller.Rigidbody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
         animator.SetBool("IsDead", true);
         if(health >0)
         {
             animator.SetTrigger("EnvirontmentDeath");
         }
+        if(NumLives >=0)
+        {
+            gameController.UpdateLives(NumLives);
+            //respawn
+            StartCoroutine(Respawn());
+        }
+        else //game over
+        {
+            StartCoroutine(TransitionToGameOver());
+            Controller.enabled = false;
+
+        }
+    }
+
+    IEnumerator Respawn()
+    {
         Controller.enabled = false;
-        //this.enabled = false;
+        yield return new WaitForSeconds(3.0f);
+        Controller.Respawn();
+        Controller.enabled = true;
     }
 }

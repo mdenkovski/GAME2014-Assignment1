@@ -26,7 +26,9 @@ public class GameController : MonoBehaviour
     private float scoreLabelHalfWidth;
     private float scoreLabelHalfHeight;
 
-   public Vector2 scale;
+
+
+    public Vector2 scale;
 
     private void Start()
     {
@@ -47,14 +49,14 @@ public class GameController : MonoBehaviour
         scoreLabelHalfWidth = scale.x * ScoreLabel.rectTransform.rect.width * 0.5f;
         scoreLabelHalfHeight = scale.y * ScoreLabel.rectTransform.rect.height * 0.5f;
 
-        
+
         //debug the position adjustment values
         //Rect safeArea = Screen.safeArea;
         //Debug.Log("X: " + safeArea.width);
         //Debug.Log("Y: " + safeArea.height);
         //Debug.Log("width: " + Screen.width);
         //Debug.Log("height: " + Screen.height);
-      
+
         //Debug.Log("safe area left: " + Screen.safeArea.xMin);
         //Debug.Log("safe area right: " + Screen.safeArea.xMax);
 
@@ -68,10 +70,16 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         LivesLabel.rectTransform.position = new Vector2(Screen.safeArea.xMin + livesLabelHalfWidth, Screen.safeArea.yMax - livesLabelHalfHeight);
         ScoreLabel.rectTransform.position = new Vector2(Screen.safeArea.xMax - scoreLabelHalfWidth, Screen.safeArea.yMax - scoreLabelHalfHeight);
+    }
 
-       
+    public void UpdateLives(int lives)
+    {
+        LivesLabel.text = "Lives: " + lives.ToString();
+    }
+    public void UpdateScore(int score)
+    {
+        ScoreLabel.text = "Score: " + score.ToString();
     }
 }

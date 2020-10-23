@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Respawn();
     }
 
 
@@ -114,6 +115,12 @@ public class PlayerController : MonoBehaviour
             //set our last attack time to the current time
             lastAttack = Time.time;
         }
+    }
 
+    public void Respawn()
+    {
+        transform.position = FindObjectOfType<PlayerRespawn>().transform.position;
+        animator.SetBool("IsDead", false);
+        animator.SetTrigger("Respawn");
     }
 }
