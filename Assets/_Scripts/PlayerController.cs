@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public float AttackPower = 10; //how much damage we deal
     public float AttackSpeed = 1.0f; // how many seconds need to pass for us to attack
     private float lastAttack;
+    private Vector3 m_direction;
 
 
     private void Start()
@@ -55,11 +56,13 @@ public class PlayerController : MonoBehaviour
         if (joystick.InputDirection.x > 0.2f)//move right
         {
             //Debug.Log("Moving Right");
+            m_direction = Vector3.right;
             Rigidbody.velocity = new Vector2(Speed , Rigidbody.velocity.y);
             spriteRenderer.flipX = false;
         }
         else if (joystick.InputDirection.x < -0.2f) // move left
         {
+            m_direction = Vector3.left;
             //flip our sprite to face the opposite direction
             spriteRenderer.flipX = true;
             //Debug.Log("Moving Left");
@@ -90,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         //Debug.DrawLine(transform.position, transform.position +  new Vector3(joystick.InputDirection.normalized.x, joystick.InputDirection.normalized.y, 0.0f)*5);
 
-        Debug.DrawLine(AttackPositoin.position, AttackPositoin.position + Vector3.right * AttackRange, Color.red);
+        Debug.DrawLine(AttackPositoin.position, AttackPositoin.position + m_direction * AttackRange, Color.red);
     }
 
     /// <summary>
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour
             //get all the enemies hit in the circle and that are on the layer
             //Collider2D hitEnemy = Physics2D.OverlapCircle(AttackPositoin.position, AttackRange, enemyLayers);
             
-            RaycastHit2D hit = Physics2D.Linecast(AttackPositoin.position, AttackPositoin.position + Vector3.right * AttackRange, enemyLayers);
+            RaycastHit2D hit = Physics2D.Linecast(AttackPositoin.position, AttackPositoin.position + m_direction * AttackRange, enemyLayers);
            // Debug.Log(hit.collider);
             if (hit.collider != null)
             {
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn()
     {
+        m_direction = Vector3.right;
         transform.position = FindObjectOfType<PlayerRespawn>().transform.position;
         animator.SetBool("IsDead", false);
         animator.SetTrigger("Respawn");

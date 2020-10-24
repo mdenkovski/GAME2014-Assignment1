@@ -40904,7 +40904,6 @@ MonoBehaviour:
   Speed: 10
   JumpPower: 5
   animator: {fileID: 1105561400}
-  HealthSlider: {fileID: 0}
   AttackPositoin: {fileID: 1673735818}
   AttackRange: 1.5
   enemyLayers:
@@ -40948,7 +40947,7 @@ MonoBehaviour:
   gameController: {fileID: 1434706708}
   HealthSlider: {fileID: 1040261530}
   NumLives: 3
-  maxHealth: 30
+  maxHealth: 200
 --- !u!1 &1207682132
 GameObject:
   m_ObjectHideFlags: 0
