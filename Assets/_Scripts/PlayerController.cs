@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     //use to manipulate the direction of our sprite
     private SpriteRenderer spriteRenderer;
 
+   
+
     //all our variables we need to control our attacks
     [Header("Attacking")]
     public Transform AttackPositoin;
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetFloat("Speed", math.abs(Rigidbody.velocity.x));
 
-        if (joystick.InputDirection.y > 0.8f) //jump
+        if (joystick.InputDirection.y > 0.7f) //jump
         {
             if (transform.position.y < 1.16 && transform.position.y > 1.15) //if near gorund level
             {

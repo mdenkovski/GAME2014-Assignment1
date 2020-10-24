@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -19,7 +20,11 @@ public class PlayerStats : MonoBehaviour
     public PlayerController Controller;
     public Animator animator;
 
+    //to be able to update our lives
     public GameController gameController;
+
+    //to control our health bar
+    public Slider HealthSlider;
 
     public int NumLives = 3;
 
@@ -34,6 +39,8 @@ public class PlayerStats : MonoBehaviour
     {
         //set health to max health
         health = maxHealth;
+        HealthSlider.maxValue = maxHealth;
+        HealthSlider.value = health;
         gameController.UpdateLives(NumLives);
     }
 
@@ -70,11 +77,13 @@ public class PlayerStats : MonoBehaviour
         {
             animator.SetTrigger("Hit");
             health -= damage;
+            HealthSlider.value = health;
         }
         if (health <= 0)
         {
             health = 0;
-            
+            HealthSlider.value = health;
+
             Death();
         }
     }
@@ -103,6 +112,7 @@ public class PlayerStats : MonoBehaviour
         animator.SetBool("IsDead", true);
         if(health >0)
         {
+            HealthSlider.value = 0;
             animator.SetTrigger("EnvirontmentDeath");
         }
         if(NumLives >=0)
@@ -124,6 +134,8 @@ public class PlayerStats : MonoBehaviour
         Controller.enabled = false;
         yield return new WaitForSeconds(3.0f);
         health = maxHealth;
+        HealthSlider.value = health;
+        b_dead = false;
         Controller.Respawn();
         Controller.enabled = true;
     }
