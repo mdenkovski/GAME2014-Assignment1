@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// GroundEnemyController.cs
-/// Last Edit Oct 23, 2020
+/// Last Edit Oct 24, 2020
 /// - added simple AI to move towards player if within certain range
 /// - animations based on actions
 /// - attack the player and deal damage if within a certain range
@@ -15,6 +15,7 @@ using UnityEngine;
 /// - movement based on rigidbody
 /// - patroling behaviour
 /// - move toward player when detected
+/// - added audio effect for attacking
 /// </summary>
 
 public class GroundEnemyController : MonoBehaviour
@@ -39,6 +40,9 @@ public class GroundEnemyController : MonoBehaviour
     private GameObject playerCharacter;
     //use to manipulate the direction of our sprite
     private SpriteRenderer spriteRenderer;
+
+    //AUdio effects
+    public AudioSource AttackAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +130,7 @@ public class GroundEnemyController : MonoBehaviour
             //Debug.Log("Attacking");
             //attack animation
             animator.SetTrigger("Attack");
+            StartCoroutine(PlayDelayedAttackAudio());
             //set our last attack time to the current time
             lastAttack = Time.time;
             //deal guaranteed damage to our player
@@ -133,5 +138,16 @@ public class GroundEnemyController : MonoBehaviour
            
         }
 
+    }
+
+    /// <summary>
+    /// Play the audio after a delay for better timing
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator PlayDelayedAttackAudio()
+    {
+        yield return new WaitForSeconds(0.2f);
+        //play our audio attack effect
+        AttackAudio.Play();
     }
 }

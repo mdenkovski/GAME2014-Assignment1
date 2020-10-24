@@ -7,12 +7,13 @@ using UnityEngine;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// PlayerController.cs
-/// Last Edit Oct 23, 2020
+/// Last Edit Oct 24, 2020
 /// - added movement to take input from our joystick
 /// - added animation transitions based on actions
 /// - added player attack
 ///  - attack in correct direction
 ///  - respawn feature
+///  - added audio effect for swinging weapon
 /// </summary>
 
 public class PlayerController : MonoBehaviour
@@ -31,7 +32,9 @@ public class PlayerController : MonoBehaviour
     //use to manipulate the direction of our sprite
     private SpriteRenderer spriteRenderer;
 
-   
+    //AUdio effects
+    public AudioSource SwingWeaponAudio;
+
 
     //all our variables we need to control our attacks
     [Header("Attacking")]
@@ -108,17 +111,13 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("Attacking");
             animator.SetTrigger("Attack"); //attack animation
-            //get all the enemies hit in the circle and that are on the layer
-            //Collider2D hitEnemy = Physics2D.OverlapCircle(AttackPositoin.position, AttackRange, enemyLayers);
-            
+            SwingWeaponAudio.Play();
             RaycastHit2D hit = Physics2D.Linecast(AttackPositoin.position, AttackPositoin.position + m_direction * AttackRange, enemyLayers);
            // Debug.Log(hit.collider);
             if (hit.collider != null)
             {
                 hit.collider.GetComponent<EnemyStats>().TakeDamage(AttackPower);
             }
-            //perform damage calculation if we hit the enemy
-            //hitEnemy.GetComponent<EnemyStats>().TakeDamage(AttackPower);
             //set our last attack time to the current time
             lastAttack = Time.time;
         }

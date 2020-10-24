@@ -8,10 +8,11 @@ using UnityEngine.UI;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// GameController.cs
-/// Last Edit Oct 21, 2020
+/// Last Edit Oct 24, 2020
 /// -updated rotation to account for landsape ref resolution
 /// - commented outsome debug lines
 ///  - added functions to increase score and update lives labels
+///  -added audio effect for increase score
 /// </summary>
 
 public class GameController : MonoBehaviour
@@ -32,6 +33,10 @@ public class GameController : MonoBehaviour
 
     public Vector2 scale;
 
+
+    //AUdio effects
+    public AudioSource PointsIncreaseAudio;
+
     private void Start()
     {
         Vector2 ScreenRes = new Vector2(Screen.safeArea.width, Screen.safeArea.height);
@@ -51,7 +56,8 @@ public class GameController : MonoBehaviour
         scoreLabelHalfWidth = scale.x * ScoreLabel.rectTransform.rect.width * 0.5f;
         scoreLabelHalfHeight = scale.y * ScoreLabel.rectTransform.rect.height * 0.5f;
 
-        IncreaseScore(0);
+        //set our score label
+        ScoreLabel.text = "Score: " + m_score.ToString();
 
         //debug the position adjustment values
         //Rect safeArea = Screen.safeArea;
@@ -90,6 +96,7 @@ public class GameController : MonoBehaviour
     {
         m_score += score;
         ScoreLabel.text = "Score: " + m_score.ToString();
+        PointsIncreaseAudio.Play();
     }
 
     /// <summary>

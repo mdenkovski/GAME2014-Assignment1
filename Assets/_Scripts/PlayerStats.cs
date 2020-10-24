@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// PlayerStats.cs
-/// Last Edit Oct 23, 2020
+/// Last Edit Oct 24, 2020
 /// - added stats that the player would need
 /// - added functions for taking damage and death
 /// - added coroutine to taking damage so that timing works better
 /// - added transition to game over screen
 /// - connectoin to health bar slider
+/// - added audio effects for death and life increase
 /// </summary>
 
 public class PlayerStats : MonoBehaviour
@@ -28,6 +29,10 @@ public class PlayerStats : MonoBehaviour
     public Slider HealthSlider;
 
     public int NumLives = 3;
+
+    //Audio effects
+    public AudioSource DeathAudio;
+    public AudioSource LifeIncreaseAudio;
 
     //set our max health in editor
     public float maxHealth;
@@ -63,6 +68,7 @@ public class PlayerStats : MonoBehaviour
     public void AddLife()
     {
         NumLives++;
+        LifeIncreaseAudio.Play();
         gameController.UpdateLives(NumLives);
     }
 
@@ -109,6 +115,7 @@ public class PlayerStats : MonoBehaviour
         Debug.Log("Dead");
         b_dead = true;
         NumLives -= 1;
+        DeathAudio.Play();
         Controller.Rigidbody.velocity = new Vector3(0.0f, 0.0f, 0.0f);
         animator.SetBool("IsDead", true);
         if(health >0)
