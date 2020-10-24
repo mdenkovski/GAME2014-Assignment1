@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// EndScreenManager.cs
+/// Last Edit Oct 23, 2020
+/// - take informaiton from the game stats and display it on the text
+/// </summary>
 public class EndScreenManager : MonoBehaviour
 {
     private int m_score;
@@ -37,9 +43,4 @@ public class EndScreenManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

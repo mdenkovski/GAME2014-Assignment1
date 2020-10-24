@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 /// - added functions for taking damage and death
 /// - added coroutine to taking damage so that timing works better
 /// - added transition to game over screen
+/// - connectoin to health bar slider
 /// </summary>
 
 public class PlayerStats : MonoBehaviour

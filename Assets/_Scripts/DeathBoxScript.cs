@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// DeathBoxScript.cs
+/// Last Edit Oct 23, 2020
+/// - kill the player if they enter the trigger
+/// </summary>
+
 public class DeathBoxScript : MonoBehaviour
 {
-    //public BoxCollider2D deathBoxCollider;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Player Entered Collider");

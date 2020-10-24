@@ -11,6 +11,7 @@ using UnityEngine.UI;
 /// Last Edit Oct 21, 2020
 /// -updated rotation to account for landsape ref resolution
 /// - commented outsome debug lines
+///  - added functions to increase score and update lives labels
 /// </summary>
 
 public class GameController : MonoBehaviour

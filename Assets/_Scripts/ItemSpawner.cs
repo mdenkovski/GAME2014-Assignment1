@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// ItemSpawner.cs
+/// Last Edit Oct 23, 2020
+/// - spawn a random item of the prefabs
+/// </summary>
 public class ItemSpawner : MonoBehaviour
 {
     public GameObject PotionPrefab;

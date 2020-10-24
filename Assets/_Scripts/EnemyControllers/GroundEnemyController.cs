@@ -13,6 +13,8 @@ using UnityEngine;
 /// - attack the player and deal damage if within a certain range
 /// - reworked AI to use line tracing to detect the player
 /// - movement based on rigidbody
+/// - patroling behaviour
+/// - move toward player when detected
 /// </summary>
 
 public class GroundEnemyController : MonoBehaviour

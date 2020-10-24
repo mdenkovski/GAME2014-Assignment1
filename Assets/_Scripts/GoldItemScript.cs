@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Michael Dnekovski 101222288 Game 2014
+/// GoldItemScript.cs
+/// Last Edit Oct 23, 2020
+/// - adds x amount of score to player upon trigger
+/// - update the score
+/// </summary>
+
 public class GoldItemScript : MonoBehaviour
 {
     public int PointValue;

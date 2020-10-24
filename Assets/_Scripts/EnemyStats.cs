@@ -6,9 +6,10 @@ using UnityEngine;
 /// <summary>
 /// Michael Dnekovski 101222288 Game 2014
 /// EnemyStats.cs
-/// Last Edit Oct 21, 2020
+/// Last Edit Oct 23, 2020
 /// - added stats that an enemy would need
 /// - added take damage and death functions to control those functions
+/// - give score when die
 /// </summary>
 public class EnemyStats : MonoBehaviour
 {
