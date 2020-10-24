@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetFloat("Speed", math.abs(Rigidbody.velocity.x));
 
-        if (joystick.InputDirection.y > 0.7f) //jump
+        if (joystick.InputDirection.y > 0.6f) //jump
         {
             if (transform.position.y < 1.16 && transform.position.y > 1.15) //if near gorund level
             {
